@@ -39,7 +39,7 @@ int main() {
     };
 
     Customer* coffeeHead = nullptr; 
-    deque<Customer> muffinsDqeue; 
+    deque<Customer> muffinsDeque; 
 
     for(int i = 0; i < 3; i++) { 
         Customer* tempCustomer = new Customer; 
@@ -56,6 +56,11 @@ int main() {
             }
             currCustomer->next = tempCustomer; 
         }
+
+        Customer tempDequeCustomer; 
+        tempDequeCustomer.name = names[rand() % namesCount]; 
+        tempDequeCustomer.order = muffins[rand() % muffinCount];
+        muffinsDeque.push_back(tempDequeCustomer);
     }
 
     for(int i = 0; i < 10; i++) { 
@@ -87,19 +92,22 @@ int main() {
                 currCustomer->next = tempCustomer; 
             }
         }
+        
         cout << endl;
 
-        if(!muffinsDqeue.empty()) { 
-            
+        if(!muffinsDeque.empty()) { 
+            Customer frontCustomer = muffinsDeque.front();
+            cout << frontCustomer.name << " was served " << frontCustomer.order << endl;
+            muffinsDeque.pop_front(); 
         } else { 
             cout << "Muffins queue is currently empty" << endl;
         }
 
         if(rand() % 100 < NEW_CUSTOMER_PROP) {
-            Customer* tempCustomer = new Customer; 
-            tempCustomer->name = names[rand() % namesCount]; 
-            tempCustomer->order = muffins[rand() % muffinCount];
-            muffinsDqeue.push_back(tempCustomer);
+            Customer tempCustomer; 
+            tempCustomer.name = names[rand() % namesCount]; 
+            tempCustomer.order = muffins[rand() % muffinCount];
+            muffinsDeque.push_back(tempCustomer);
         }
         cout << endl;
     }
