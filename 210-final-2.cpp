@@ -4,6 +4,7 @@
 #include <string>
 #include <deque> 
 #include <vector>
+#include <list>
 using namespace std; 
 
 struct Customer { 
@@ -16,7 +17,7 @@ const int NEW_CUSTOMER_PROP = 50;
 
 int main() {
     srand(time(NULL));
-    int namesCount = 20, drinksCount = 20, muffinCount = 20, braceletCount = 20; 
+    int namesCount = 20, drinksCount = 20, muffinCount = 20, braceletCount = 20, donutsCount = 20; 
     string names[] = {
         "Caleb", "Zoe", "Jackson", "Lila", "Mateo", "Chloe", "Lucas", "Hazel",
         "Aiden", "Nora", "Emma", "Liam", "Olivia", "Noah", "Ava", "Mason",
@@ -47,10 +48,20 @@ int main() {
         "Glow-in-the-Dark Bracelet", "Metallic Thread Bracelet", "Emerald Knot Bracelet",
         "Amethyst Bead Bracelet", "Sports Team Colors Bracelet"
     };
+    string donuts[] = {
+        "Glazed Donut", "Chocolate Frosted Donut", "Strawberry Sprinkle Donut",
+        "Boston Cream Donut", "Maple Bar Donut", "Cinnamon Sugar Donut",
+        "Jelly-Filled Donut", "Powdered Sugar Donut", "Old-Fashioned Donut",
+        "Blueberry Cake Donut", "Apple Fritter", "Chocolate Cake Donut",
+        "Vanilla Cream Donut", "Cookies and Cream Donut", "Caramel Crunch Donut",
+        "Lemon-Filled Donut", "S'mores Donut", "Pumpkin Spice Donut",
+        "Red Velvet Donut", "Birthday Cake Donut"
+    };
 
     Customer* coffeeHead = nullptr; 
     deque<Customer> muffinsDeque; 
     vector<Customer> braceletsVector; 
+    list<Customer> donutsList; 
 
     for(int i = 0; i < 3; i++) { 
         Customer* tempCustomer = new Customer; 
