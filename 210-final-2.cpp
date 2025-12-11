@@ -1,5 +1,7 @@
 #include <iostream>
-
+#include <ctime>
+#include <cstdlib>
+#include <string>
 using namespace std; 
 
 struct Customer { 
@@ -9,13 +11,31 @@ struct Customer {
 };
 
 int main() {
-
+    srand(time(0));
+    int namesCount = 10, drinksCount = 10; 
     string names[] = {"Caleb", "Zoe", "Jackson", "Lila", "Mateo", "Chloe", "Lucas", "Hazel", "Aiden", "Nora"};
     string drinks[] = {"Vanilla Cold Brew", "Iced Mocha", "Flat White", "Americano", "Chai Latte",
                         "Matcha Latte", "Hot Chocolate", "Pumpkin Spice Latte",
                         "Honey Almond Latte", "Iced Espresso"};
     
-    Customer* coffeListHead = nullptr; 
+    Customer* head = nullptr; 
+
+    for(int i = 0; i < 5; i++) { 
+        Customer* tempCustomer = new Customer; 
+        tempCustomer->name = names[rand() % namesCount]; 
+        tempCustomer->order = drinks[rand() % drinksCount];
+        tempCustomer->next = nullptr; 
+
+        if(head == nullptr) { 
+            head = tempCustomer; 
+        } else { 
+            Customer* currCustomer = head; 
+            while(currCustomer->next) { 
+                currCustomer = currCustomer->next; 
+            }
+            currCustomer->next = tempCustomer; 
+        }
+    }
 
     return 0;
 }
