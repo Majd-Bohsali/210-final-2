@@ -96,14 +96,17 @@ int main() {
     }
 
     for(int i = 0; i < 10; i++) { 
+        cout << endl;
         cout << "Round " << i+1 << ":" << endl;
+        
+        cout << "Coffee Queue:" << endl;
         if(coffeeHead) { 
             Customer* frontCustomer = coffeeHead;
-            cout << frontCustomer->name << " was served " << frontCustomer->order << endl; 
+            cout << "    " << frontCustomer->name << " was served " << frontCustomer->order << endl; 
             coffeeHead = frontCustomer->next; 
             delete frontCustomer; 
         } else { 
-            cout << "Coffee queue is currently empty" << endl;
+            cout << "    Coffee queue is currently empty" << endl;
         }
 
         if(rand() % 100 < NEW_CUSTOMER_PROP) {
@@ -112,10 +115,10 @@ int main() {
             tempCustomer->order = drinks[rand() % drinksCount];
             tempCustomer->next = nullptr;  
 
-            cout << tempCustomer->name << " joined the coffee line" << endl;
+            cout << "    " << tempCustomer->name << " joined the coffee line" << endl;
 
             if(coffeeHead == nullptr) { 
-            coffeeHead = tempCustomer; 
+                coffeeHead = tempCustomer; 
             } else { 
                 Customer* currCustomer = coffeeHead; 
                 while(currCustomer->next) { 
@@ -126,12 +129,13 @@ int main() {
         }
         cout << endl;
 
+        cout << "Muffins Queue:" << endl;
         if(!muffinsDeque.empty()) { 
             Customer frontCustomer = muffinsDeque.front();
-            cout << frontCustomer.name << " was served " << frontCustomer.order << endl;
+            cout << "    " << frontCustomer.name << " was served " << frontCustomer.order << endl;
             muffinsDeque.pop_front(); 
         } else { 
-            cout << "Muffins queue is currently empty" << endl;
+            cout << "    Muffins queue is currently empty" << endl;
         }
 
         if(rand() % 100 < NEW_CUSTOMER_PROP) {
@@ -139,16 +143,17 @@ int main() {
             tempCustomer.name = names[rand() % namesCount]; 
             tempCustomer.order = muffins[rand() % muffinCount];
             muffinsDeque.push_back(tempCustomer);
-            cout << tempCustomer.name << " joined the muffins line" << endl;
+            cout << "    " << tempCustomer.name << " joined the muffins line" << endl;
         }
         cout << endl;
 
+        cout << "Friendship Bracelets Queue:" << endl;
         if(!braceletsVector.empty()) { 
             Customer frontCustomer = braceletsVector.at(0);
-            cout << frontCustomer.name << " was served " << frontCustomer.order << endl;
+            cout << "    " << frontCustomer.name << " was served " << frontCustomer.order << endl;
             braceletsVector.erase(braceletsVector.begin()); 
         } else { 
-            cout << "Friendship Bracelets queue is currently empty" << endl;
+            cout << "    Friendship Bracelets queue is currently empty" << endl;
         }
 
         if(rand() % 100 < NEW_CUSTOMER_PROP) {
@@ -156,16 +161,17 @@ int main() {
             tempCustomer.name = names[rand() % namesCount]; 
             tempCustomer.order = bracelets[rand() % braceletCount];
             braceletsVector.push_back(tempCustomer);
-            cout << tempCustomer.name << " joined the friendship bracelets line" << endl;
+            cout << "    " << tempCustomer.name << " joined the friendship bracelets line" << endl;
         }
         cout << endl;
-        
+
+        cout << "Donuts Queue:" << endl;
         if(!donutsList.empty()) { 
             Customer frontCustomer = donutsList.front();
-            cout << frontCustomer.name << " was served " << frontCustomer.order << endl;
+            cout << "    " << frontCustomer.name << " was served " << frontCustomer.order << endl;
             donutsList.pop_front(); 
         } else { 
-            cout << "Donuts queue is currently empty" << endl;
+            cout << "    Donuts queue is currently empty" << endl;
         }
 
         if(rand() % 100 < NEW_CUSTOMER_PROP) {
@@ -173,9 +179,11 @@ int main() {
             tempCustomer.name = names[rand() % namesCount]; 
             tempCustomer.order = donuts[rand() % donutCount];
             donutsList.push_back(tempCustomer);
-            cout << tempCustomer.name << " joined the donuts line" << endl;
+            cout << "    " << tempCustomer.name << " joined the donuts line" << endl;
         }
         cout << endl;
+
+        cout << "---------------------------------------" << endl;
     }
 
     return 0;
