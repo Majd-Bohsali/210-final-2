@@ -1,0 +1,2 @@
+
+                currCustomer = currCustomer->next; 

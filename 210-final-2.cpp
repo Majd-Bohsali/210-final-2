@@ -11,7 +11,7 @@ struct Customer {
 };
 
 int main() {
-    srand(time(0));
+    srand(time(NULL));
     int namesCount = 10, drinksCount = 10; 
     string names[] = {"Caleb", "Zoe", "Jackson", "Lila", "Mateo", "Chloe", "Lucas", "Hazel", "Aiden", "Nora"};
     string drinks[] = {"Vanilla Cold Brew", "Iced Mocha", "Flat White", "Americano", "Chai Latte",
@@ -34,6 +34,18 @@ int main() {
                 currCustomer = currCustomer->next; 
             }
             currCustomer->next = tempCustomer; 
+        }
+    }
+
+    for(int i = 0; i < 10; i++) { 
+        cout << "Round " << i+1 << ":" << endl;
+        if(head) { 
+            Customer* frontCustomer = head;
+            cout << frontCustomer->name << " was served " << frontCustomer->order << endl; 
+            head = frontCustomer->next; 
+            delete frontCustomer; 
+        } else { 
+            cout << "Coffee queue is currently empty" << endl;
         }
     }
 
