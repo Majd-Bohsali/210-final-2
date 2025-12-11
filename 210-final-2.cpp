@@ -17,7 +17,7 @@ const int NEW_CUSTOMER_PROP = 50;
 
 int main() {
     srand(time(NULL));
-    int namesCount = 20, drinksCount = 20, muffinCount = 20, braceletCount = 20, donutsCount = 20; 
+    int namesCount = 20, drinksCount = 20, muffinCount = 20, braceletCount = 20, donutCount = 20; 
     string names[] = {
         "Caleb", "Zoe", "Jackson", "Lila", "Mateo", "Chloe", "Lucas", "Hazel",
         "Aiden", "Nora", "Emma", "Liam", "Olivia", "Noah", "Ava", "Mason",
@@ -88,6 +88,11 @@ int main() {
         tempVectorCustomer.name = names[rand() % namesCount]; 
         tempVectorCustomer.order = bracelets[rand() % braceletCount];
         braceletsVector.push_back(tempVectorCustomer); 
+
+        Customer tempListCustomer; 
+        tempListCustomer.name = names[rand() % namesCount]; 
+        tempListCustomer.order = donuts[rand() % donutCount];
+        donutsList.push_back(tempListCustomer); 
     }
 
     for(int i = 0; i < 10; i++) { 
@@ -152,6 +157,23 @@ int main() {
             tempCustomer.order = bracelets[rand() % braceletCount];
             braceletsVector.push_back(tempCustomer);
             cout << tempCustomer.name << " joined the friendship bracelets line" << endl;
+        }
+        cout << endl;
+        
+        if(!donutsList.empty()) { 
+            Customer frontCustomer = donutsList.front();
+            cout << frontCustomer.name << " was served " << frontCustomer.order << endl;
+            donutsList.pop_front(); 
+        } else { 
+            cout << "Donuts queue is currently empty" << endl;
+        }
+
+        if(rand() % 100 < NEW_CUSTOMER_PROP) {
+            Customer tempCustomer; 
+            tempCustomer.name = names[rand() % namesCount]; 
+            tempCustomer.order = donuts[rand() % donutCount];
+            donutsList.push_back(tempCustomer);
+            cout << tempCustomer.name << " joined the donuts line" << endl;
         }
         cout << endl;
     }
